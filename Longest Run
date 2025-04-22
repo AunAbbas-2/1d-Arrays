@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {1, 2, 2, 1, 5, 7, 7, 7, 7, 2, 2, 2, 1, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    int maxNum = arr[0], maxLen = 1, currentNum = arr[0], currentLen = 1;
+
+    for (int i = 1; i < n; i++) {
+        if (arr[i] == arr[i - 1]) { 
+            currentLen++;  
+        } 
+        else {
+            if (currentLen > maxLen) {  
+                maxLen = currentLen;
+                maxNum = currentNum;
+            }
+            currentNum = arr[i];  
+            currentLen = 1;
+        }
+    }
+
+        if (currentLen > maxLen) {
+        maxLen = currentLen;
+        maxNum = currentNum;
+    }
+
+    cout << "Longest run: " << maxLen << " consecutive " << maxNum << "s" << endl;
+
+    return 0;
+}
